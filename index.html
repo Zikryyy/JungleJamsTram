@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle Jams Tram - Enriching Zoo Encounters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "";
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #90EE90;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 85, 48, 0.8), rgba(74, 124, 89, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23228B22" width="1200" height="600"/><circle fill="%2332CD32" cx="200" cy="150" r="80" opacity="0.3"/><circle fill="%2390EE90" cx="800" cy="200" r="100" opacity="0.3"/><circle fill="%23ADFF2F" cx="1000" cy="400" r="60" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5530;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c5530;
+        }
+
+        /* Technology Section */
+        .technology {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .tech-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member::before {
+            content: "👨‍🎓";
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Demo Section */
+        .demo {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .demo-container {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-button {
+            background: #FF6B35;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.3s;
+        }
+
+        .demo-button:hover {
+            background: #F7931E;
+            transform: scale(1.05);
+        }
+
+        #demo-output {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            min-height: 60px;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c5530;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #90EE90;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .features-grid,
+            .tech-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <nav class="container">
+        <div class="logo">Jungle Jams Tram</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#demo">Demo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Jungle Jams Tram</h1>
+            <p>Enriching Zoo Encounters through RFID Audio Technology</p>
+            <a href="#features" class="cta-button">Discover More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features">
+    <div class="container">
+        <h2 class="fade-in">Revolutionary Zoo Experience</h2>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <span class="feature-icon">🎵</span>
+                <h3>Immersive Audio</h3>
+                <p>Experience captivating audio narratives tailored to each exhibit as you approach different zones in the zoo.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <span class="feature-icon">📡</span>
+                <h3>RFID Technology</h3>
+                <p>Advanced RFID RC522 system provides seamless interaction with strategically placed tags throughout the zoo.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <span class="feature-icon">🎓</span>
+                <h3>Educational Content</h3>
+                <p>Learn about species, habitats, and conservation efforts through curated educational audio content.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <span class="feature-icon">🚊</span>
+                <h3>Tram Integration</h3>
+                <p>Seamlessly integrated with zoo tram systems for an enhanced visitor journey experience.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <span class="feature-icon">🌱</span>
+                <h3>Eco-Friendly</h3>
+                <p>Reduces paper waste while promoting environmental awareness and conservation education.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <span class="feature-icon">⚡</span>
+                <h3>Real-Time Response</h3>
+                <p>Instant audio playback triggered by RFID detection for a dynamic and interactive experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Section -->
+<section id="technology" class="technology">
+    <div class="container">
+        <h2 class="fade-in">Advanced Technology Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-item fade-in">
+                <h4>Arduino Uno R3</h4>
+                <p>Central microcontroller for processing RFID data and controlling audio playback</p>
+            </div>
+            <div class="tech-item fade-in">
+                <h4>RFID RC522</h4>
+                <p>High-frequency RFID reader for precise location tracking and interaction</p>
+            </div>
+            <div class="tech-item fade-in">
+                <h4>DFPlayer Mini</h4>
+                <p>MP3 player module with SD card support for storing and playing audio content</p>
+            </div>
+            <div class="tech-item fade-in">
+                <h4>Audio System</h4>
+                <p>8-ohm 3W speakers for clear and immersive audio output</p>
+            </div>
+            <div class="tech-item fade-in">
+                <h4>Arduino IDE</h4>
+                <p>Development environment for programming and controlling the system</p>
+            </div>
+            <div class="tech-item fade-in">
+                <h4>Proteus Simulation</h4>
+                <p>Circuit design and simulation software for system optimization</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="team">
+    <div class="container">
+        <h2 class="fade-in">Meet the Team</h2>
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <h3>Muhammad Zikry Bin Zaharudin</h3>
+                <p>B022110145</p>
+                <p>Project Lead & Hardware Integration</p>
+            </div>
+            <div class="team-member fade-in">
+                <h3>Muhammad Fahmi Hafizi Bin Rosmidi</h3>
+                <p>B022110132</p>
+                <p>Software Development & Testing</p>
+            </div>
+            <div class="team-member fade-in">
+                <h3>Mohamad Firdaus Bin Hasan</h3>
+                <p>B022110136</p>
+                <p>System Design & Documentation</p>
+            </div>
+        </div>
+        <div class="fade-in" style="text-align: center; margin-top: 2rem;">
+            <p><strong>Supervisor:</strong> Dr. Zaiton Binti Abdul Mutalip</p>
+            <p>Faculty of Electronics and Computer Technology and Engineering</p>
+            <p>Universiti Teknikal Malaysia Melaka (UTeM)</p>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Section -->
+<section id="demo" class="demo">
+    <div class="container">
+        <h2 class="fade-in">Interactive Demo</h2>
+        <div class="demo-container fade-in">
+            <h3>Simulate RFID Card Detection</h3>
+            <p>Click the buttons below to simulate different RFID cards being detected by the system:</p>
+            <button class="demo-button" onclick="simulateRFID('Lion Exhibit')">🦁 Lion Exhibit</button>
+            <button class="demo-button" onclick="simulateRFID('Elephant Sanctuary')">🐘 Elephant Sanctuary</button>
+            <button class="demo-button" onclick="simulateRFID('Bird Paradise')">🦅 Bird Paradise</button>
+            <div id="demo-output">Ready to simulate RFID detection...</div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Project Info</h4>
+                <p>Integrated Design Project (IDP)</p>
+                <p>Subject Code: BENU 3863</p>
+                <p>Year: 2024</p>
+            </div>
+            <div class="footer-section">
+                <h4>Technology</h4>
+                <p>RFID RC522</p>
+                <p>Arduino Uno R3</p>
+                <p>DFPlayer Mini</p>
+            </div>
+            <div class="footer-section">
+                <h4>University</h4>
+                <p>Universiti Teknikal Malaysia Melaka</p>
+                <p>Faculty of Electronics and Computer Technology and Engineering</p>
+            </div>
+        </div>
+        <p>&copy; 2024 Jungle Jams Tram Project. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+
+    // RFID Simulation Demo
+    function simulateRFID(location) {
+        const output = document.getElementById('demo-output');
+        output.innerHTML = `
+                <div style="color: #90EE90; margin-bottom: 10px;">🔍 RFID Card Detected!</div>
+                <div>Location: ${location}</div>
+                <div>Status: Playing audio content...</div>
+                <div style="margin-top: 10px; font-style: italic;">
+                    "Welcome to the ${location}! Here you can learn about amazing wildlife and conservation efforts..."
+                </div>
+            `;
+
+        // Add pulse animation to the output
+        output.classList.add('pulse');
+        setTimeout(() => {
+            output.classList.remove('pulse');
+        }, 2000);
+    }
+
+    // Dynamic background animation
+    function createFloatingElements() {
+        const elements = ['🦁', '🐘', '🦅', '🐅', '🦏', '🐧', '🦒'];
+
+        setInterval(() => {
+            const element = document.createElement('div');
+            element.style.cssText = `
+                    position: fixed;
+                    top: 100vh;
+                    left: ${Math.random() * 100}vw;
+                    font-size: 2rem;
+                    pointer-events: none;
+                    z-index: 1;
+                    animation: float 10s linear forwards;
+                    opacity: 0.1;
+                `;
+            element.textContent = elements[Math.floor(Math.random() * elements.length)];
+            document.body.appendChild(element);
+
+            setTimeout(() => {
+                element.remove();
+            }, 10000);
+        }, 3000);
+    }
+
+    // Add floating animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 0.1;
+                }
+                50% {
+                    opacity: 0.3;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+    document.head.appendChild(style);
+
+    // Initialize floating elements
+    createFloatingElements();
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(44, 85, 48, 0.95)';
+            header.style.backdropFilter = 'blur(10px)';
+        } else {
+            header.style.background = 'linear-gradient(135deg, #2c5530 0%, #4a7c59 100%)';
+            header.style.backdropFilter = 'none';
+        }
+    });
+</script>
+</body>
+</html>
